@@ -1,10 +1,10 @@
 ## 📸 Screenshots
 
 ### Main UI
-![Main UI](assets/main-ui.png)
+![Main UI](assets/main-ui.jpg)
 
 ### Calculator
-![Calculator](assets/calculator.png)
+![Calculator](assets/calculator.jpg)
 
 ### Result
-![Result](assets/result.png)
+![Result](assets/result.jpg)
