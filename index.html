@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -261,6 +260,19 @@
         .semester-meta { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
         .sgpa-badge { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: var(--bg); border: 1px solid var(--border); color: var(--text); }
         .credits-badge { font-size: 12px; color: var(--text-tertiary); font-weight: 500; }
+        
+        /* NEW Refresh Button Styling */
+        .btn-refresh-sem { 
+            width: 28px; height: 28px; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            border: 1px solid transparent; border-radius: var(--radius-xs); 
+            background: transparent; color: var(--accent); cursor: pointer; 
+            font-size: 12px; transition: all var(--transition); 
+        }
+        .btn-refresh-sem:hover { 
+            background: var(--accent-light); color: var(--accent-hover); transform: rotate(180deg); 
+        }
+
         .btn-icon { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid transparent; border-radius: var(--radius-xs); background: transparent; color: var(--text-tertiary); cursor: pointer; font-size: 12px; transition: all var(--transition); }
         .btn-icon:hover { background: var(--danger-light); color: var(--danger); }
         .btn-icon:disabled { opacity: 0.2; cursor: not-allowed; pointer-events: none; }
@@ -269,8 +281,8 @@
         .semester-card.open .semester-body { max-height: 5000px; opacity: 1; }
         .semester-body-inner { padding: 4px 18px 18px; }
 
-        /* Subject Row */
-        .subject-row { display: grid; grid-template-columns: 24px 54px 1fr 60px 100px auto auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-light); animation: rowIn 0.2s ease-out; transition: opacity 0.15s ease, transform 0.15s ease; }
+        /* Subject Row - Updated Grid for Notif Column */
+        .subject-row { display: grid; grid-template-columns: 24px 54px 1fr 60px 100px 70px auto auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border-light); animation: rowIn 0.2s ease-out; transition: opacity 0.15s ease, transform 0.15s ease; }
         .subject-row:last-of-type { border-bottom: none; }
         @keyframes rowIn { from{opacity:0;transform:translateX(-4px)} to{opacity:1;transform:translateX(0)} }
         .subject-row.replaced { opacity: 0.4; filter: grayscale(0.8); }
@@ -286,6 +298,7 @@
         .input:disabled { opacity: 0.5; cursor: not-allowed; background: var(--bg); }
         .input::placeholder { color: var(--text-tertiary); font-weight: 400; }
         .code-input { text-transform: uppercase; font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.5px; font-weight: 600; }
+        .notif-input { text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 0.5px; font-weight: 600; }
         .credits-input { text-align: center; -moz-appearance: textfield; font-weight: 600; }
         
         select.grade-select { appearance: none; -webkit-appearance: none; width: 100%; padding: 7px 24px 7px 10px; background: var(--input-bg); border: 1px solid var(--border); border-radius: var(--radius-xs); color: var(--text); font-family: inherit; font-size: 13px; cursor: pointer; outline: none; transition: all var(--transition); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath d='M1 1l3 3 3-3' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
@@ -303,13 +316,14 @@
         .btn-add-subject { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 8px; margin-top: 10px; background: transparent; border: 1px dashed var(--border); border-radius: var(--radius-sm); color: var(--text-tertiary); font-family: inherit; font-size: 12px; font-weight: 600; cursor: pointer; transition: all var(--transition); }
         .btn-add-subject:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 
-        /* Calc Box */
-        .calc-box { margin-top: 14px; padding: 10px 14px; background: var(--card); border: 1px solid var(--border-light); border-radius: var(--radius-xs); font-family: 'Courier New', monospace; font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+        /* Calc Box - Styled to look like a math formula */
+        .calc-box { margin-top: 14px; padding: 12px 14px; background: var(--card); border: 1px solid var(--border-light); border-radius: var(--radius-xs); font-family: 'Courier New', monospace; font-size: 11px; color: var(--text-secondary); line-height: 1.5; overflow-x: auto; white-space: nowrap; }
         .calc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 700; color: var(--text-tertiary); margin-bottom: 6px; display: block; font-family: 'Space Grotesk', sans-serif; }
-        .calc-row { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+        .calc-row { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; }
         .calc-num { color: var(--accent); font-weight: 700; }
         .calc-denom { color: var(--text-secondary); font-weight: 600; }
-        .calc-eq { color: var(--text-tertiary); margin: 0 2px; }
+        .calc-eq { color: var(--text-tertiary); margin: 0 4px; font-weight: 700; }
+        .calc-part { color: var(--text); font-weight: 600; }
 
         .add-semester-wrap { text-align: center; margin: 10px 0 30px; }
         .btn-add-semester { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all var(--transition); box-shadow: var(--shadow-sm); }
@@ -389,7 +403,7 @@
             body{background:#fff!important;color:#000!important}
             body::before,body::after,#toast-container,.header-actions,.info-bar,.btn-add-subject,
             .add-semester-wrap,.btn-icon,.backlog-check,.grading-ref-header .arrow,.pdf-loading,
-            .drag-handle,.grading-ref-link,.student-details,.remarks-modal,.important-note,.tool-selector,.developer-credit{display:none!important}
+            .drag-handle,.grading-ref-link,.student-details,.remarks-modal,.important-note,.tool-selector,.developer-credit,.btn-refresh-sem{display:none!important}
             .semester-body{max-height:none!important;opacity:1!important}
             .semester-card{box-shadow:none!important;border:1px solid #ddd!important;break-inside:avoid;margin-bottom:20px}
             .result-card{box-shadow:none!important;border:1px solid #000!important; margin-top:30px; padding: 20px;}
@@ -400,7 +414,7 @@
             .app-header h1{color:#000}
             #app{padding:0!important;max-width:100%!important}
             input,select{border:1px solid #ccc!important;background:#fff!important; color: #000 !important;}
-            .subject-row{grid-template-columns:1fr 68px 106px auto auto!important; border-bottom: 1px solid #eee !important;}
+            .subject-row{grid-template-columns:1fr 1fr 70px 1fr 68px 106px auto auto!important; border-bottom: 1px solid #eee !important;}
             .header-branding { margin-bottom: 20px; }
             .dtu-logo { width: 60px; margin-bottom: 10px; }
             .calc-box { border: 1px solid #eee; background: #fff; padding: 10px; margin-bottom: 10px; font-size: 10px; }
@@ -412,6 +426,7 @@
             #app{padding:16px 14px 60px}
             .semester-header{padding:12px 14px}
             .semester-body-inner{padding:0 14px 14px}
+            /* Responsive stack for small screens - keeping it simple */
             .subject-row{grid-template-columns:1fr;gap:6px;padding:10px 0}
             .subject-row .credits-input{width:80px}
             .subject-row .grade-select{width:120px}
@@ -484,7 +499,7 @@
 
             <div class="important-note">
                 <i class="fas fa-exclamation-circle"></i>
-                <div><strong>Note:</strong> This calculator uses the <strong>Absolute Grading Method</strong> prescribed by DTU ordinance. Calculations follow the official 10-point scale. <a href="https://dtu.ac.in/Web/notice/2018/nov/file1136.pdf" target="_blank" rel="noopener noreferrer">View Official PDF <i class="fas fa-external-link-alt" style="font-size:10px"></i></a>.</div>
+                <div><strong>Note:</strong> This calculator uses the <strong>Absolute Grading Method</strong> prescribed by DTU ordinance. Calculations follow official 10-point scale. <a href="https://dtu.ac.in/Web/notice/2018/nov/file1136.pdf" target="_blank" rel="noopener noreferrer">View Official PDF <i class="fas fa-external-link-alt" style="font-size:10px"></i></a>.</div>
             </div>
 
             <div id="semesters-container"></div>
@@ -526,16 +541,16 @@
                 </div>
                 <div class="grading-ref-body">
                     <table class="grading-ref-table">
-                        <thead><tr><th>Grade</th><th>Points</th><th>Range (m ± σ)</th><th>Absolute %</th></tr></thead>
+                        <thead><tr><th>Grade</th><th>Points</th><th>Range (m Â± Ïƒ)</th><th>Absolute %</th></tr></thead>
                         <tbody>
-                            <tr><td class="grade-cell">O</td><td class="points-cell">10</td><td class="formula-cell">m ≥ x̄ + 1.5σ</td><td>≥ 91%</td></tr>
-                            <tr><td class="grade-cell">A+</td><td class="points-cell">9</td><td class="formula-cell">m ≥ x̄ + 1σ</td><td>≥ 82%</td></tr>
-                            <tr><td class="grade-cell">A</td><td class="points-cell">8</td><td class="formula-cell">m ≥ x̄ + 0.5σ</td><td>≥ 73%</td></tr>
-                            <tr><td class="grade-cell">B+</td><td class="points-cell">7</td><td class="formula-cell">m ≥ x̄ + 0σ</td><td>≥ 64%</td></tr>
-                            <tr><td class="grade-cell">B</td><td class="points-cell">6</td><td class="formula-cell">m ≥ x̄ - 0.5σ</td><td>≥ 55%</td></tr>
-                            <tr><td class="grade-cell">C</td><td class="points-cell">5</td><td class="formula-cell">m ≥ x̄ - 1σ</td><td>≥ 46%</td></tr>
-                            <tr><td class="grade-cell">P</td><td class="points-cell">4</td><td class="formula-cell">m ≥ x̄ - 1.5σ</td><td>≥ 35%</td></tr>
-                            <tr><td class="grade-cell">F</td><td class="points-cell">0</td><td class="formula-cell">m < x̄ - 1.5σ</td><td>< 35%</td></tr>
+                            <tr><td class="grade-cell">O</td><td class="points-cell">10</td><td class="formula-cell">m â‰¥ xÌ„ + 1.5Ïƒ</td><td>â‰¥ 91%</td></tr>
+                            <tr><td class="grade-cell">A+</td><td class="points-cell">9</td><td class="formula-cell">m â‰¥ xÌ„ + 1Ïƒ</td><td>â‰¥ 82%</td></tr>
+                            <tr><td class="grade-cell">A</td><td class="points-cell">8</td><td class="formula-cell">m â‰¥ xÌ„ + 0.5Ïƒ</td><td>â‰¥ 73%</td></tr>
+                            <tr><td class="grade-cell">B+</td><td class="points-cell">7</td><td class="formula-cell">m â‰¥ xÌ„ + 0Ïƒ</td><td>â‰¥ 64%</td></tr>
+                            <tr><td class="grade-cell">B</td><td class="points-cell">6</td><td class="formula-cell">m â‰¥ xÌ„ - 0.5Ïƒ</td><td>â‰¥ 55%</td></tr>
+                            <tr><td class="grade-cell">C</td><td class="points-cell">5</td><td class="formula-cell">m â‰¥ xÌ„ - 1Ïƒ</td><td>â‰¥ 46%</td></tr>
+                            <tr><td class="grade-cell">P</td><td class="points-cell">4</td><td class="formula-cell">m â‰¥ xÌ„ - 1.5Ïƒ</td><td>â‰¥ 35%</td></tr>
+                            <tr><td class="grade-cell">F</td><td class="points-cell">0</td><td class="formula-cell">m < xÌ„ - 1.5Ïƒ</td><td>< 35%</td></tr>
                         </tbody>
                     </table>
                     <div class="grading-ref-link">
@@ -620,7 +635,7 @@
         <div class="remarks-overlay" id="remarks-overlay"></div>
         <div class="remarks-card">
             <h3><i class="fas fa-pen-fancy"></i> Add Remarks</h3>
-            <p class="remarks-subtitle">Optional — Add notes for failed subjects</p>
+            <p class="remarks-subtitle">Optional â€” Add notes for failed subjects</p>
             <div class="remarks-body" id="remarks-body"></div>
             <div class="remarks-footer">
                 <button class="btn" id="btn-skip-remarks">Skip</button>
@@ -699,7 +714,7 @@
             });
             const res = cr > 0 ? pts / cr : 0;
             document.getElementById('quick-sgpa-val').textContent = res.toFixed(2);
-            return { res, totalPoints: pts, totalCredits: cr, parts: quickSgpaState.rows.map(r => `(${GRADE_POINTS[r.grade]}×${r.credits})`) };
+            return { res, totalPoints: pts, totalCredits: cr, parts: quickSgpaState.rows.map(r => `(${GRADE_POINTS[r.grade]}Ã—${r.credits})`) };
         }
 
         function renderQuickSgpa() {
@@ -757,7 +772,7 @@
             });
             const res = cr > 0 ? pts / cr : 0;
             document.getElementById('quick-cgpa-val').textContent = res.toFixed(3);
-            return { res, totalPoints: pts, totalCredits: cr, parts: quickCgpaState.rows.map(r => `(${r.cgpa}×${r.credits})`) };
+            return { res, totalPoints: pts, totalCredits: cr, parts: quickCgpaState.rows.map(r => `(${r.cgpa}Ã—${r.credits})`) };
         }
 
         function renderQuickCgpa() {
@@ -782,7 +797,7 @@
         /* ================= DETAILED CALCULATOR LOGIC ================= */
         function loadState() {
             try {
-                const saved = localStorage.getItem('dtu_gpa_state_v9'); 
+                const saved = localStorage.getItem('dtu_gpa_state_v10'); // Incremented version
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     state = { ...state, ...parsed };
@@ -791,6 +806,7 @@
                             if(sem.subjects) {
                                 sem.subjects.forEach(sub => {
                                     if (sub.code === undefined) sub.code = '';
+                                    if (sub.notif === undefined) sub.notif = ''; // NEW FIELD MIGRATION
                                     if (sub.isBacklog === undefined) sub.isBacklog = false;
                                     if (sub.replaced === undefined) sub.replaced = false;
                                     if (sub.replacedId === undefined) sub.replacedId = null;
@@ -808,7 +824,7 @@
         function saveState() {
             state.studentName = document.getElementById('student-name').value;
             state.studentRoll = document.getElementById('student-roll').value;
-            try { localStorage.setItem('dtu_gpa_state_v9', JSON.stringify(state)); } catch (e) {}
+            try { localStorage.setItem('dtu_gpa_state_v10', JSON.stringify(state)); } catch (e) {}
         }
 
         function syncStudentFields() {
@@ -829,23 +845,33 @@
         function renderAll() { renderSemesters(); updateResultDisplay(); updateEmptyState(); updateInfoBar(); updateGradingRefState(); }
 
         function generateCalculationString(subjects, type) {
-            const filtered = subjects.filter(s => !s.replaced && s.name.trim() && s.credits > 0);
+            // Filter subjects based on type
+            let filtered = subjects.filter(s => !s.replaced && s.name.trim() && s.credits > 0);
+            
+            if (type === 'sgpa') {
+                // For SGPA, we usually include all valid subjects, even F grades (0 points), 
+                // because they consume credits. This matches the "Formal" request.
+                // Just check valid inputs.
+                filtered = subjects.filter(s => !s.replaced && s.name.trim() && s.credits > 0);
+            } else {
+                // For CGPA, we typically exclude F grades from the calculation (they give 0 points)
+                // but they are still part of the 'subjects'. 
+                // The user wants to formula.
+                filtered = subjects.filter(s => !s.replaced && s.name.trim() && s.credits > 0 && s.grade !== 'F');
+            }
+
             if (filtered.length === 0) return null;
 
             const parts = filtered.map(s => {
                 const pts = GRADE_POINTS[s.grade] || 0;
-                if (type === 'cgpa' && s.grade === 'F') return null;
-                return `(${pts}×${s.credits})`;
-            }).filter(p => p !== null);
-
-            if (parts.length === 0) return null;
+                return `(${pts}Ã—${s.credits})`;
+            });
 
             let totalPoints = 0;
             let totalCredits = 0;
 
             filtered.forEach(s => {
                 const pts = GRADE_POINTS[s.grade] || 0;
-                if (type === 'cgpa' && s.grade === 'F') return;
                 totalPoints += pts * s.credits;
                 totalCredits += s.credits;
             });
@@ -854,12 +880,51 @@
 
             const result = totalPoints / totalCredits;
             
+            // HTML Structure mimicking the formula image
+            // (Ax)+(Bx) / Total = Result
             return {
-                textHTML: `<span class="calc-num">(${parts.join(' + ')})</span> <span class="calc-eq">/</span> <span class="calc-denom">${totalCredits}</span> <span class="calc-eq">=</span> <span class="calc-num">${totalPoints}</span> <span class="calc-eq">/</span> <span class="calc-denom">${totalCredits}</span> <span class="calc-eq">=</span> <strong>${result.toFixed(2)}</strong>`,
+                textHTML: `<span class="calc-part">${parts.join(' + ')}</span> <span class="calc-eq">/</span> <span class="calc-denom">${totalCredits}</span> <span class="calc-eq">=</span> <span class="calc-num">${result.toFixed(2)}</span>`,
                 rawParts: parts,
                 totalPoints,
                 totalCredits,
                 result
+            };
+        }
+        
+        // Helper for PDF plain text
+        function generatePlainCalculationString(subjects, type) {
+            let filtered = subjects.filter(s => !s.replaced && s.name.trim() && s.credits > 0);
+            
+            // If SGPA, include F grades (0 pts) in calculation string as per "Formal" rule
+            if (type !== 'sgpa') {
+                 filtered = subjects.filter(s => !s.replaced && s.name.trim() && s.credits > 0 && s.grade !== 'F');
+            }
+
+            if (filtered.length === 0) return null;
+
+            const parts = filtered.map(s => {
+                const pts = GRADE_POINTS[s.grade] || 0;
+                return `(${pts}Ã—${s.credits})`;
+            });
+
+            let totalPoints = 0;
+            let totalCredits = 0;
+
+            filtered.forEach(s => {
+                const pts = GRADE_POINTS[s.grade] || 0;
+                totalPoints += pts * s.credits;
+                totalCredits += s.credits;
+            });
+
+            if (totalCredits === 0) return null;
+            const result = totalPoints / totalCredits;
+
+            return {
+                textStr: `(${parts.join(' + ')}) / ${totalCredits} = ${result.toFixed(2)}`,
+                totalPoints,
+                totalCredits,
+                result,
+                parts // raw string parts
             };
         }
 
@@ -874,7 +939,7 @@
             const calc = generateCalculationString(sem.subjects, 'sgpa');
             let calcHTML = '';
             if (calc) {
-                calcHTML = `<div class="calc-box"><span class="calc-label">SGPA Formula</span><div class="calc-row">${calc.textHTML}</div></div>`;
+                calcHTML = `<div class="calc-box"><span class="calc-label">SGPA Formal Calculation (Includes F)</span><div class="calc-row">${calc.textHTML}</div></div>`;
             }
 
             return `<div class="semester-card ${sem.expanded?'open':''}" data-sem-id="${sem.id}">
@@ -883,6 +948,9 @@
                     <div class="semester-meta">
                         <span class="sgpa-badge">SGPA: ${sgpa.toFixed(2)}</span>
                         <span class="credits-badge">${tc} Cr</span>
+                        <button class="btn-refresh-sem" data-action="refresh-semester" data-sem-id="${sem.id}" title="Refresh SGPA Calculation">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
                         <button class="btn-icon" data-action="remove-semester" data-sem-id="${sem.id}" aria-label="Remove semester"><i class="fas fa-trash-alt"></i></button>
                     </div>
                 </div>
@@ -897,12 +965,15 @@
             const drag = sub.replaced ? '' : 'draggable="true"';
             const tag = sub.replaced ? '<span class="replaced-tag">Replaced</span>' : '';
             const opts = Object.keys(GRADE_POINTS).map(g => `<option value="${g}" ${sub.grade===g?'selected':''}>${g} (${GRADE_POINTS[g]})</option>`).join('');
+            
+            // Reordering inputs: Code -> Name -> Credits -> Grade -> Notif -> Backlog -> Remove
             return `<div class="subject-row ${sub.replaced?'replaced':''}" data-sub-id="${sub.id}" ${drag}>
                 <div class="drag-handle"><i class="fas fa-grip-vertical"></i></div>
                 <input type="text" class="input code-input" placeholder="CODE" data-field="code" value="${escapeHtml(sub.code)}" ${dis}>
                 <input type="text" class="input" placeholder="Subject Name" data-field="name" value="${escapeHtml(sub.name)}" ${dis}>
                 <input type="number" class="input credits-input" placeholder="Cr" data-field="credits" value="${sub.credits}" min="1" max="20" step="1" ${dis}>
                 <select class="grade-select" data-field="grade" ${dis}>${opts}</select>
+                <input type="text" class="input notif-input" placeholder="Notif" data-field="notif" value="${escapeHtml(sub.notif)}" ${dis}>
                 ${sub.replaced ? tag : `
                     <label class="backlog-check"><input type="checkbox" data-field="backlog" ${sub.isBacklog?'checked':''}><span class="checkmark"><i class="fas fa-check"></i></span><span>Backlog</span></label>
                     <button class="btn-icon" data-action="remove-subject" data-sem-id="${sem.id}" data-sub-id="${sub.id}"><i class="fas fa-times"></i></button>
@@ -913,7 +984,13 @@
         /* Calculations */
         function calcSGPA(sem) {
             let pts=0,cr=0;
-            sem.subjects.forEach(s => { if(s.replaced||!s.name.trim()||s.credits<=0)return; pts+=(GRADE_POINTS[s.grade]||0)*s.credits; cr+=s.credits; });
+            // Ensure we only use THIS semester's subjects, not global state
+            if(!sem || !sem.subjects) return 0;
+            sem.subjects.forEach(s => { 
+                if(s.replaced||!s.name.trim()||s.credits<=0)return; 
+                pts+=(GRADE_POINTS[s.grade]||0)*s.credits; 
+                cr+=s.credits; 
+            });
             return cr>0?pts/cr:0;
         }
         function getSemTotalCredits(sem) { return sem.subjects.filter(s=>!s.replaced&&s.name.trim()&&s.credits>0).reduce((a,s)=>a+s.credits,0); }
@@ -922,6 +999,11 @@
             state.semesters.forEach(sem => {
                 if(sem.subjects) {
                     sem.subjects.forEach(s => {
+                        // Standard CGPA excludes F grades (which contribute 0 pts but consume credits usually)
+                        // However, usually CGPA = Sum(PassCredits*Point) / Sum(PassCredits).
+                        // If we include F, the credits go up but points stay 0, lowering CGPA. 
+                        // We will exclude F grades from the denominator for CGPA to match standard academic practices
+                        // unless user wants raw average. The prompt implies standard result.
                         if(s.replaced||!s.name.trim()||s.credits<=0||s.grade==='F')return;
                         pts+=(GRADE_POINTS[s.grade]||0)*s.credits;
                         cr+=s.credits;
@@ -1041,7 +1123,7 @@
         }
         function addSubject(semId) {
             const sem = state.semesters.find(s=>s.id===semId); if(!sem)return;
-            const sub = { id: state.nextSubId++, code:'', name:'', credits:0, grade:'O', isBacklog:false, replaced:false, replacedId:null };
+            const sub = { id: state.nextSubId++, code:'', notif:'', name:'', credits:4, grade:'O', isBacklog:false, replaced:false, replacedId:null }; // CHANGED CREDITS TO 4
             if(!sem.subjects) sem.subjects = [];
             sem.subjects.push(sub); saveState(); renderAll();
             setTimeout(() => { const r = document.querySelector(`[data-sem-id="${semId}"] [data-sub-id="${sub.id}"] .input`); if(r) r.focus(); }, 50);
@@ -1059,6 +1141,7 @@
                 const oldN = sub.name.trim().toLowerCase(); sub.name = value; const newN = sub.name.trim().toLowerCase();
                 if(sub.isBacklog&&oldN!==newN) { if(sub.replacedId){unreplacedSubject(sub.replacedId);sub.replacedId=null;} if(newN){const m=findEarlierMatch(semId,subId,newN);if(m)applyReplacement(sub,m);} }
             } else if (field==='code') { sub.code = value.toUpperCase(); }
+            else if (field==='notif') { sub.notif = value.toUpperCase(); } // NEW: Handle Notif field
             else if (field==='credits') { sub.credits = Math.max(0,Math.min(20,parseInt(value)||0)); }
             else if (field==='grade') { sub.grade = value; }
             saveState(); updateAllSGPABadges(); updateResultDisplay();
@@ -1084,6 +1167,20 @@
         }
         function applyReplacement(n,o){o.replaced=true;n.replacedId=o.id;}
         function unreplacedSubject(id){for(const sem of state.semesters){const s=sem.subjects.find(x=>x.id===id);if(s){s.replaced=false;return;}}}
+
+        /* NEW: Refresh SGPA Function */
+        function refreshSemester(semId) {
+            const sem = state.semesters.find(s => s.id === semId);
+            if(!sem) return;
+            
+            // Force re-render and recalculation for just this semester
+            // Re-rendering the whole container is safest to ensure consistency
+            renderAll();
+            saveState();
+            
+            // Provide feedback
+            showToast(`SGPA for Semester refreshed`, 'info');
+        }
 
         /* Drag & Drop */
         function handleDragStart(e) {
@@ -1118,7 +1215,7 @@
             }
         }
 
-        /* ============ PDF EXPORT (UNTOUCHED LOGIC) ============ */
+        /* ============ PDF EXPORT (UPDATED LOGIC) ============ */
         function startPDFExport() {
             const activeTool = document.querySelector('.tool-container.active').id;
 
@@ -1172,7 +1269,7 @@
                     const pageW = doc.internal.pageSize.getWidth(); const margin = 14; let y = generatePDFHeader(doc, 'SGPA Calculator Report', pageW, margin);
                     const tableBody = quickSgpaState.rows.map((r, i) => {
                         const gp = GRADE_POINTS[r.grade] || 0; const status = r.grade === 'F' ? 'FAIL' : 'PASS';
-                        return [i+1, '', r.subject || '—', r.credits, r.grade, gp, status, 'No'];
+                        return [i+1, '', r.subject || 'â€”', r.credits, r.grade, gp, status, 'No'];
                     });
                     doc.autoTable({
                         startY: y, head: [['Sr.', 'Sub Code', 'Subject Name', 'Cr.', 'Grade', 'GP', 'Status', 'BL Hist.']],
@@ -1193,6 +1290,7 @@
                     doc.setFont('helvetica', 'bold'); doc.text(`Total SGPA: ${calcData.res.toFixed(2)}`, pageW - margin, y, { align: 'right' }); y += 8;
                     if (calcData.totalCredits > 0) {
                         doc.setFont('courier', 'normal'); doc.setFontSize(8); doc.setTextColor(80, 80, 80);
+                        // Updated Calculation Format
                         const calcStr = `SGPA = (${calcData.parts.join(' + ')}) / ${calcData.totalCredits} = ${calcData.totalPoints} / ${calcData.totalCredits} = ${calcData.res.toFixed(2)}`;
                         const splitCalc = doc.splitTextToSize(calcStr, pageW - margin*2); doc.text(splitCalc, margin, y);
                         y += (splitCalc.length * 3.5) + 4; doc.setTextColor(0,0,0);
@@ -1270,7 +1368,9 @@
                         effective.forEach(sub => {
                             const gp = GRADE_POINTS[sub.grade] || 0; const status = getSubStatus(sub); const blHist = sub.isBacklog ? 'Yes' : 'No';
                             semCr += sub.credits; semPts += gp * sub.credits;
-                            tableBody.push([srNo++, sub.code || '—', sub.name || '—', sub.credits, sub.grade, gp, status, blHist]);
+                            // Reordered columns: Sr, Code, Name, Credits, Grade, GP, Status, BL Hist, Notif (Last)
+                            // FIXED: Removed the '—' placeholder for empty Notif fields to avoid weird font characters
+                            tableBody.push([srNo++, sub.code || '—', sub.name || '—', sub.credits, sub.grade, gp, status, blHist, sub.notif || '']);
                         });
                         effective.forEach(sub => {
                             if (sub.grade !== 'F') {
@@ -1279,12 +1379,25 @@
                             }
                         });
                         const sgpa = semCr > 0 ? semPts / semCr : 0;
+                        
+                        // Updated Table Headers with Notif at end
                         doc.autoTable({
-                            startY: y, margin: { left: margin, right: margin }, head: [['Sr.', 'Sub Code', 'Subject Name', 'Cr.', 'Grade', 'GP', 'Status', 'BL Hist.']],
+                            startY: y, margin: { left: margin, right: margin }, 
+                            head: [['Sr.', 'Sub Code', 'Subject Name', 'Cr.', 'Grade', 'GP', 'Status', 'BL Hist.', 'Notif']],
                             body: tableBody, theme: 'grid',
                             styles: { fontSize: 8, cellPadding: 2, lineColor: [180, 180, 180], lineWidth: 0.15 },
                             headStyles: { fillColor: [26, 31, 54], textColor: [255,255, 255], fontSize: 8, fontStyle: 'bold', halign: 'center', cellPadding: 2.5 },
-                            columnStyles: { 0: { halign: 'center', cellWidth: 10 }, 1: { cellWidth: 20 }, 2: { cellWidth: 'auto' }, 3: { halign: 'center', cellWidth: 12 }, 4: { halign: 'center', cellWidth: 14 }, 5: { halign: 'center', cellWidth: 10 }, 6: { cellWidth: 35, fontSize: 7.5 }, 7: { halign: 'center', cellWidth: 15 } },
+                            columnStyles: { 
+                                0: { halign: 'center', cellWidth: 10 }, 
+                                1: { cellWidth: 18 }, 
+                                2: { cellWidth: 'auto' }, 
+                                3: { halign: 'center', cellWidth: 12 }, 
+                                4: { halign: 'center', cellWidth: 14 }, 
+                                5: { halign: 'center', cellWidth: 10 }, // GP
+                                6: { cellWidth: 30, fontSize: 7.5 }, // Status
+                                7: { halign: 'center', cellWidth: 15 }, // BL Hist
+                                8: { halign: 'center', cellWidth: 15 }  // Notif (Moved here)
+                            },
                             didParseCell: function(data) {
                                 if (data.section === 'body' && data.column.index === 6) {
                                     const v = data.cell.raw;
@@ -1297,13 +1410,17 @@
                         y = doc.lastAutoTable.finalY + 5;
                         doc.setFontSize(9.5); doc.setFont('helvetica', 'normal'); doc.text(`Total Credits: ${semCr}`, margin, y);
                         doc.setFont('helvetica', 'bold'); doc.text(`SGPA: ${sgpa.toFixed(2)}`, pageW - margin, y, { align: 'right' }); y += 7;
-                        const sgpaCalc = generateCalculationString(sem.subjects, 'sgpa');
+                        
+                        // Add SGPA Calculation formula to PDF as per request
+                        const sgpaCalc = generatePlainCalculationString(sem.subjects, 'sgpa');
                         if(sgpaCalc) {
                             doc.setFont('courier', 'normal'); doc.setFontSize(8); doc.setTextColor(80, 80, 80);
-                            const calcStr = `SGPA = (${sgpaCalc.rawParts.join(' + ')}) / ${sgpaCalc.totalCredits} = ${sgpaCalc.totalPoints} / ${sgpaCalc.totalCredits} = ${sgpaCalc.result.toFixed(2)}`;
+                            // Format: (Ax)+(Bx)... / Total = Result
+                            const calcStr = `SGPA = ${sgpaCalc.textStr}`;
                             const splitCalc = doc.splitTextToSize(calcStr, pageW - margin*2); doc.text(splitCalc, margin, y);
                             y += (splitCalc.length * 3.5) + 4; doc.setTextColor(0,0,0);
                         }
+
                         if (semIdx < state.semesters.length - 1) { doc.setDrawColor(180, 180, 180); doc.setLineWidth(0.2); doc.setLineDashPattern([2, 2], 0); doc.line(margin, y, pageW - margin, y); doc.setLineDashPattern([], 0); y += 7; }
                     });
                     if (y > 245) { doc.addPage(); y = margin; } y += 3;
@@ -1313,11 +1430,12 @@
                     doc.setFontSize(10.5); doc.setFont('helvetica', 'normal'); doc.text(`Total Credits (Passed Only):  ${totalCreditsAll}`, margin + 4, y); y += 7;
                     doc.setFontSize(14); doc.setFont('helvetica', 'bold'); doc.setTextColor(0, 140, 80); doc.text(`Final CGPA:  ${cgpa.toFixed(2)}`, margin + 4, y); doc.setTextColor(0, 0, 0); y += 8;
                     if (totalCreditsAll > 0) {
-                        const allSubjects = state.semesters.flatMap(s => s.subjects); const cgpaCalc = generateCalculationString(allSubjects, 'cgpa');
+                        const allSubjects = state.semesters.flatMap(s => s.subjects); 
+                        const cgpaCalc = generatePlainCalculationString(allSubjects, 'cgpa');
                         if(cgpaCalc) {
                             doc.setFontSize(9); doc.setTextColor(60, 60, 60); doc.setFont('helvetica', 'bold'); doc.text('Calculation Details:', margin + 4, y); y += 4;
                             doc.setFont('courier', 'normal'); doc.setTextColor(80, 80, 80);
-                            const calcStr = `CGPA = (${cgpaCalc.rawParts.join(' + ')}) / ${cgpaCalc.totalCredits} = ${cgpaCalc.totalPoints} / ${cgpaCalc.totalCredits} = ${cgpaCalc.result.toFixed(2)}`;
+                            const calcStr = `CGPA = ${cgpaCalc.textStr}`;
                             const splitCalc = doc.splitTextToSize(calcStr, pageW - margin*2 - 4); doc.text(splitCalc, margin + 4, y); y += (splitCalc.length * 3.5) + 4;
                         }
                     }
@@ -1329,7 +1447,7 @@
                         doc.setFontSize(9); doc.setFont('helvetica', 'normal');
                         remarksEntries.forEach(([key, remark]) => {
                             if (y > 275) { doc.addPage(); y = margin; }
-                            doc.setTextColor(210, 40, 40); doc.text(`• ${key}:`, margin + 3, y, { continued: true });
+                            doc.setTextColor(210, 40, 40); doc.text(`â€¢ ${key}:`, margin + 3, y, { continued: true });
                             doc.setTextColor(60, 60, 60); doc.text(`  ${remark}`); y += 5;
                         });
                         doc.setTextColor(0, 0, 0); y += 4;
@@ -1343,7 +1461,7 @@
                         doc.text(`Page ${i} of ${pageCount}`, pageW - margin, pageH - 6, { align: 'right' });
                     }
                     doc.save('DTU_GPA_Result.pdf'); showToast('PDF downloaded successfully', 'success');
-                } catch (err) { console.error('PDF generation failed:', err); showToast('PDF generation failed — try again', 'error'); } finally { loading.classList.remove('active'); }
+                } catch (err) { console.error('PDF generation failed:', err); showToast('PDF generation failed â€” try again', 'error'); } finally { loading.classList.remove('active'); }
             }, 80);
         }
 
@@ -1371,6 +1489,7 @@
                     case 'reset': e.preventDefault(); handleReset(); break;
                     case 'export-pdf': e.preventDefault(); startPDFExport(); break;
                     case 'toggle-grading-ref': e.preventDefault(); toggleGradingRef(); break;
+                    case 'refresh-semester': e.preventDefault(); e.stopPropagation(); refreshSemester(parseInt(el.dataset.semId)); break; // NEW
                 }
             });
 
@@ -1395,7 +1514,8 @@
             document.getElementById('dismiss-info').addEventListener('click',function(){state.infoDismissed=true;saveState();updateInfoBar();});
             document.addEventListener('keydown',function(e){
                 if(e.key==='Enter'&&e.target.dataset.field==='name'){const semEl=e.target.closest('[data-sem-id]');if(semEl){e.preventDefault();addSubject(parseInt(semEl.dataset.semId));}}
-                if(e.key==='Enter'&&e.target.dataset.field==='code'){const nameInput=e.target.closest('.subject-row').querySelector('[data-field="name"]');if(nameInput)nameInput.focus();}
+                if(e.key==='Enter'&&e.target.dataset.field==='code'){const nameInput=e.target.closest('.subject-row').querySelector('[data-field="notif"]');if(nameInput)nameInput.focus();else if(nameInput)nameInput.focus();} 
+                if(e.key==='Enter'&&e.target.dataset.field==='notif'){const nameInput=e.target.closest('.subject-row').querySelector('[data-field="name"]');if(nameInput)nameInput.focus();}
             });
 
             const container = document.getElementById('semesters-container');
